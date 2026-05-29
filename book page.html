@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>কিতাব</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Noto Sans Bengali',sans-serif;
+    background:#dfeeed;
+    overflow-x:hidden;
+}
+
+/* HEADER */
+
+.header{
+    width:100%;
+    height:60px;
+    background:#00594d;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:0 16px;
+    color:white;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    box-shadow:0 2px 8px rgba(0,0,0,0.2);
+}
+
+.header h1{
+    font-size:24px;
+    font-weight:500;
+}
+
+/* BACK BUTTON */
+
+.back-btn{
+    color:white;
+    text-decoration:none;
+    font-size:30px;
+}
+
+/* MENU BUTTON */
+
+.menu-btn{
+    font-size:30px;
+    cursor:pointer;
+}
+
+/* SIDE MENU */
+
+.side-menu{
+    position:fixed;
+    top:0;
+    right:-280px;
+    width:260px;
+    height:100%;
+    background:white;
+    z-index:2000;
+    padding-top:70px;
+    transition:0.3s;
+    box-shadow:-2px 0 10px rgba(0,0,0,0.2);
+}
+
+.side-menu.active{
+    right:0;
+}
+
+.side-menu a{
+    display:block;
+    padding:16px 25px;
+    text-decoration:none;
+    color:#222;
+    font-size:18px;
+    border-bottom:1px solid #eee;
+    transition:0.2s;
+}
+
+.side-menu a:hover{
+    background:#f2f2f2;
+}
+
+/* CLOSE BUTTON */
+
+.close-btn{
+    position:absolute;
+    top:18px;
+    right:20px;
+    font-size:30px;
+    cursor:pointer;
+}
+
+/* OVERLAY */
+
+.overlay{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.4);
+    z-index:1500;
+    display:none;
+}
+
+.overlay.active{
+    display:block;
+}
+
+/* FILTER AREA */
+
+.filter-area{
+    position:sticky;
+    top:60px;
+    z-index:999;
+    padding:10px 12px;
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+    backdrop-filter:blur(10px);
+}
+
+/* FILTER ROW */
+
+.filter-row{
+    display:flex;
+    gap:8px;
+}
+
+/* FILTER BOX */
+
+.select-box{
+    flex:1;
+    background:white;
+    border:none;
+    border-radius:30px;
+    padding:8px 14px;
+    font-size:13px;
+    font-family:'Noto Sans Bengali',sans-serif;
+    outline:none;
+    box-shadow:0 3px 10px rgba(0,0,0,0.12);
+}
+
+/* SEARCH BOX */
+
+.search-box{
+    width:100%;
+    background:white;
+    border-radius:30px;
+    padding:8px 14px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    box-shadow:0 3px 10px rgba(0,0,0,0.12);
+}
+
+/* SEARCH INPUT */
+
+.search-box input{
+    width:100%;
+    border:none;
+    outline:none;
+    background:transparent;
+    font-size:14px;
+    font-family:'Noto Sans Bengali',sans-serif;
+}
+
+/* SEARCH ICON */
+
+.search-icon{
+    font-size:18px;
+    color:#4fa391;
+}
+
+/* BOOK SECTION */
+
+.books{
+    padding:15px 16px 120px;
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:28px 18px;
+    margin-top:5px;
+}
+
+/* BOOK CARD */
+
+.book{
+    text-align:center;
+    cursor:pointer;
+}
+
+.book img{
+    width:100%;
+    height:360px;
+    object-fit:cover;
+    border-radius:8px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.15);
+    transition:0.3s;
+}
+
+.book:hover img{
+    transform:scale(1.03);
+}
+
+.book-title{
+    margin-top:10px;
+    font-size:18px;
+    color:#285a6d;
+    font-weight:600;
+}
+
+.author{
+    margin-top:5px;
+    font-size:13px;
+    color:#333;
+}
+
+/* DOWNLOAD BUTTON */
+
+.download-btn{
+    position:fixed;
+    bottom:18px;
+    left:50%;
+    transform:translateX(-50%);
+    background:#00594d;
+    color:white;
+    padding:4px 6px;
+    border-radius:50px;
+    text-decoration:none;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:17px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.25);
+    z-index:1000;
+}
+
+/* NO RESULT */
+
+.no-result{
+    grid-column:1/-1;
+    text-align:center;
+    margin-top:50px;
+    color:#444;
+    font-size:20px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:768px){
+
+    .header{
+        height:55px;
+    }
+
+    .header h1{
+        font-size:20px;
+    }
+
+    .back-btn,
+    .menu-btn{
+        font-size:26px;
+    }
+
+    .filter-area{
+        top:55px;
+        padding:8px 10px;
+    }
+
+    .select-box{
+        font-size:12px;
+        padding:7px 12px;
+    }
+
+    .search-box{
+        padding:7px 12px;
+    }
+
+    .search-box input{
+        font-size:13px;
+    }
+
+    .book img{
+        height:250px;
+    }
+
+    .book-title{
+        font-size:16px;
+    }
+
+    .author{
+        font-size:12px;
+    }
+
+    .download-btn{
+        width:50%;
+        justify-content:center;
+        font-size:16px;
+    }
+
+}
+
+@media(max-width:480px){
+
+    .books{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .book img{
+        height:215px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<div class="header">
+
+<a href="index.html" class="back-btn">
+←
+</a>
+
+<h1>রুকাইয়ার কিতাবাদি</h1>
+
+<div class="menu-btn" onclick="toggleMenu()">
+☰
+</div>
+
+</div>
+
+<!-- SIDE MENU -->
+
+<div class="side-menu" id="sideMenu">
+
+<div class="close-btn" onclick="toggleMenu()">
+✕
+</div>
+
+<a href="index.html">🏠 হোম</a>
+<a href="quran.html">📖 কুরআন</a>
+<a href="kitab.html">📚 কিতাব</a>
+<a href="bayan.html">🎤 বয়ান</a>
+<a href="masail.html">❓ মাসাইল</a>
+<a href="book page.html">📰 রুকাইয়া</a>
+<a href="settings.html">⚙️ সেটিংস</a>
+
+</div>
+
+<!-- OVERLAY -->
+
+<div class="overlay" id="overlay" onclick="toggleMenu()"></div>
+
+<!-- FILTER AREA -->
+
+<div class="filter-area">
+
+<div class="filter-row">
+
+<select class="select-box" id="authorFilter">
+
+<option>সব লেখক</option>
+<option>মুফতী মনসুরুল হক সাহেব</option>
+<option>মাওলানা যাকারিয়া</option>
+<option>মাওলানা আশরাফ আলী</option>
+<option>মুফতী শফী</option>
+<option>ইমাম নববী</option>
+<option>ইমাম বুখারী</option>
+<option>ইমাম মুসলিম</option>
+
+</select>
+
+<select class="select-box" id="categoryFilter">
+
+<option>সব বিভাগ</option>
+<option>হাদিস</option>
+<option>ফিকহ</option>
+<option>তাফসীর</option>
+<option>সীরাত</option>
+<option>আমল</option>
+<option>সুন্নাহ</option>
+<option>আকাইদ</option>
+
+</select>
+
+</div>
+
+<div class="search-box">
+
+<input
+type="text"
+id="searchInput"
+placeholder="সার্চ কিতাব..."
+>
+
+<span class="search-icon">
+⌕
+</span>
+
+</div>
+
+</div>
+
+<!-- BOOKS -->
+
+<div class="books" id="bookContainer"></div>
+
+<!-- DOWNLOAD BUTTON -->
+
+<a href="#" class="download-btn">
+⬇ ডাউনলোডেড কিতাব
+</a>
+
+<script>
+
+/* =========================
+   TOGGLE MENU
+========================= */
+
+function toggleMenu(){
+
+document.getElementById("sideMenu")
+.classList.toggle("active");
+
+document.getElementById("overlay")
+.classList.toggle("active");
+
+}
+
+/* =========================
+   BOOK DATA
+========================= */
+
+const books = [
+
+{
+name:"রুকাইয়া",
+author:"আব্দুল্লাহ আল মাহমুদ",
+category:"রুকাইয়া",
+image:"https://share.google/wLSfNjoGES5PYubAm",
+drive:"https://drive.google.com/file/d/1w8f7mFZniXW2obV2mI_jnVc34rH2xc2d/view?usp=drivesdk"
+},
+
+{
+name:"কিতাবুস সুন্নাহ",
+author:"মুফতী মনসুরুল হক সাহেব",
+category:"হাদিস",
+image:"https://picsum.photos/300/450?2",
+drive:"https://drive.google.com/"
+},
+
+{
+name:"আমালুস সুন্নাহ",
+author:"মুফতী মনসুরুল হক সাহেব",
+category:"সুন্নাহ",
+image:"https://picsum.photos/300/450?3",
+drive:"https:/"
+},
+
+{
+name:"ইশাআতুস সুন্নাহ",
+author:"মুফতী মনসুরুল হক সাহেব",
+category:"সুন্নাহ",
+image:"https://picsum.photos/300/450?4",
+drive:"https://drive.google.com/"
+},
+
+{
+name:"ফাযায়েলে আমল",
+author:"মাওলানা যাকারিয়া",
+category:"আমল",
+image:"https://picsum.photos/300/450?5",
+drive:"https://drive.google.com/"
+},
+
+{
+name:"বেহেশতি জেওর",
+author:"মাওলানা আশরাফ আলী",
+category:"ফিকহ",
+image:"https://picsum.photos/300/450?6",
+drive:"https://drive.google.com/"
+},
+
+{
+name:"তাফসীরে মারেফুল কুরআন",
+author:"মুফতী শফী",
+category:"তাফসীর",
+image:"https://picsum.photos/300/450?7",
+drive:"https://drive.google.com/"
+},
+
+{
+name:"রিয়াদুস সালেহীন",
+author:"ইমাম নববী",
+category:"হাদিস",
+image:"https://picsum.photos/300/450?8",
+drive:"https://drive.google.com/"
+},
+
+{
+name:"সহীহ বুখারী",
+author:"ইমাম বুখারী",
+category:"হাদিস",
+image:"https://picsum.photos/300/450?9",
+drive:"https://drive.google.com/"
+},
+
+{
+name:"সহীহ মুসলিম",
+author:"ইমাম মুসলিম",
+category:"হাদিস",
+image:"https://picsum.photos/300/450?10",
+drive:"https://drive.google.com/"
+},
+
+{
+name:"তিরমিযী শরীফ",
+author:"ইমাম তিরমিযী",
+category:"হাদিস",
+image:"https://picsum.photos/300/450?11",
+drive:"https://drive.google.com/"
+},
+
+{
+name:"আবু দাউদ",
+author:"ইমাম আবু দাউদ",
+category:"হাদিস",
+image:"https://picsum.photos/300/450?12",
+drive:"https://drive.google.com/"
+}
+
+];
+
+/* =========================
+   RENDER BOOKS
+========================= */
+
+const container = document.getElementById("bookContainer");
+
+function renderBooks(data){
+
+container.innerHTML = "";
+
+if(data.length === 0){
+
+container.innerHTML = `
+<div class="no-result">
+কোন কিতাব পাওয়া যায়নি
+</div>
+`;
+
+return;
+
+}
+
+data.forEach(book=>{
+
+container.innerHTML += `
+
+<div class="book"
+onclick="openBook('${book.drive}')">
+
+<img src="${book.image}">
+
+<div class="book-title">
+${book.name}
+</div>
+
+<div class="author">
+${book.author}
+</div>
+
+</div>
+
+`;
+
+});
+
+}
+
+renderBooks(books);
+
+/* =========================
+   OPEN BOOK
+========================= */
+
+function openBook(link){
+
+window.open(link,"_blank");
+
+}
+
+/* =========================
+   SEARCH + FILTER
+========================= */
+
+const searchInput = document.getElementById("searchInput");
+const authorFilter = document.getElementById("authorFilter");
+const categoryFilter = document.getElementById("categoryFilter");
+
+function filterBooks(){
+
+const searchValue = searchInput.value.toLowerCase();
+const authorValue = authorFilter.value;
+const categoryValue = categoryFilter.value;
+
+const filtered = books.filter(book => {
+
+const matchSearch =
+book.name.toLowerCase().includes(searchValue);
+
+const matchAuthor =
+authorValue === "সব লেখক"
+|| book.author === authorValue;
+
+const matchCategory =
+categoryValue === "সব বিভাগ"
+|| book.category === categoryValue;
+
+return matchSearch && matchAuthor && matchCategory;
+
+});
+
+renderBooks(filtered);
+
+}
+
+searchInput.addEventListener("keyup", filterBooks);
+authorFilter.addEventListener("change", filterBooks);
+categoryFilter.addEventListener("change", filterBooks);
+
+</script>
+
+</body>
+</html>	tml>	

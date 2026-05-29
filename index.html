@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>আমল ও রুকাইয়া</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+/* =========================
+   FIXED SCREEN
+========================= */
+
+html,
+body{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+}
+
+body{
+    font-family:'Noto Sans Bengali',sans-serif;
+    background:#dfeeed;
+    display:flex;
+    flex-direction:column;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.header{
+    width:100%;
+    background:#00594d;
+    color:white;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:12px 16px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.2);
+    flex-shrink:0;
+}
+
+.logo{
+    font-size:34px;
+}
+
+.header-title{
+    font-size:24px;
+    font-weight:600;
+}
+
+.menu{
+    font-size:32px;
+    cursor:pointer;
+}
+
+/* =========================
+   TOP BOX
+========================= */
+
+.top-box{
+    background:#1a2323;
+    color:white;
+    padding:18px;
+    line-height:1.8;
+    font-size:18px;
+    flex-shrink:0;
+}
+
+.time{
+    color:#5df0c5;
+    font-size:22px;
+    font-weight:600;
+}
+
+/* =========================
+   GRID
+========================= */
+
+.grid{
+    flex:1;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:12px;
+    padding:15px;
+    overflow:hidden;
+    align-content:start;
+}
+
+/* =========================
+   ITEM
+========================= */
+
+.item{
+    background:#eef7f5;
+    border-radius:18px;
+    padding:14px 6px;
+    text-align:center;
+    transition:0.3s;
+    cursor:pointer;
+    border:2px solid rgba(0,0,0,0.03);
+}
+
+.item:hover{
+    transform:scale(1.04);
+}
+
+.icon{
+    font-size:34px;
+}
+
+.item span{
+    display:block;
+    margin-top:8px;
+    font-size:14px;
+    color:#222;
+    font-weight:500;
+}
+
+/* =========================
+   BOTTOM SECTION
+========================= */
+
+.bottom{
+    display:flex;
+    gap:10px;
+    padding:12px;
+    padding-bottom:15px;
+    flex-shrink:0;
+}
+
+.card{
+    flex:1;
+    background:white;
+    border-radius:18px;
+    padding:18px 10px;
+    text-align:center;
+    font-size:16px;
+    font-weight:500;
+    box-shadow:0 2px 8px rgba(0,0,0,0.08);
+}
+
+.green{
+    background:#d8ebe6;
+}
+
+/* =========================
+   POPUP
+========================= */
+
+.popup-overlay{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.65);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+    padding:20px;
+}
+
+.popup-box{
+    width:100%;
+    max-width:420px;
+    background:#dfeeed;
+    border-radius:30px;
+    overflow:hidden;
+    position:relative;
+    animation:popupShow 0.3s ease;
+}
+
+.popup-header{
+    background:#00594d;
+    color:white;
+    text-align:center;
+    padding:18px;
+    font-size:28px;
+    font-weight:bold;
+}
+
+.popup-content{
+    padding:22px;
+}
+
+.popup-content h2{
+    text-align:center;
+    font-size:22px;
+    margin-bottom:18px;
+    color:#222;
+    line-height:1.5;
+}
+
+.popup-content p{
+    font-size:18px;
+    line-height:1.8;
+    color:#222;
+}
+
+.close-btn{
+    position:absolute;
+    top:15px;
+    right:15px;
+    width:48px;
+    height:48px;
+    border:none;
+    border-radius:50%;
+    background:white;
+    color:#4fa391;
+    font-size:28px;
+    cursor:pointer;
+    box-shadow:0 2px 10px rgba(0,0,0,0.2);
+}
+
+/* =========================
+   ANIMATION
+========================= */
+
+@keyframes popupShow{
+
+from{
+    transform:scale(0.8);
+    opacity:0;
+}
+
+to{
+    transform:scale(1);
+    opacity:1;
+}
+
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:768px){
+
+.header-title{
+    font-size:20px;
+}
+
+.logo{
+    font-size:28px;
+}
+
+.menu{
+    font-size:28px;
+}
+
+.top-box{
+    font-size:15px;
+    padding:15px;
+}
+
+.time{
+    font-size:19px;
+}
+
+.grid{
+    gap:10px;
+    padding:12px;
+}
+
+.item{
+    padding:12px 5px;
+}
+
+.icon{
+    font-size:30px;
+}
+
+.item span{
+    font-size:13px;
+}
+
+.card{
+    font-size:14px;
+    padding:16px 8px;
+}
+
+.popup-content h2{
+    font-size:18px;
+}
+
+.popup-content p{
+    font-size:16px;
+}
+
+.popup-header{
+    font-size:24px;
+}
+
+.close-btn{
+    width:42px;
+    height:42px;
+    font-size:22px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<div class="header">
+
+<div class="logo">
+🕌
+</div>
+
+<div class="header-title">
+আমলী যিন্দেগী ও রুকাইয়া
+</div>
+
+<div class="menu">
+⋮
+</div>
+
+</div>
+
+<!-- =========================
+     TOP BOX
+========================= -->
+
+<div class="top-box">
+
+<div id="date"></div>
+
+<div class="time" id="time"></div>
+
+<div>
+বাংলাদেশ
+</div>
+
+</div>
+
+<!-- =========================
+     GRID
+========================= -->
+
+<div class="grid">
+
+<div class="item">
+<div class="icon">📖</div>
+<span>কুরআন</span>
+</div>
+
+<div class="item">
+<div class="icon">📚</div>
+<span>কিতাব</span>
+</div>
+
+<div class="item">
+<div class="icon">🎤</div>
+<span>বয়ান</span>
+</div>
+
+<div class="item">
+<div class="icon">💬</div>
+<span>মালফুযাত</span>
+</div>
+
+<div class="item">
+<div class="icon">❓</div>
+<span>মাসাইল</span>
+</div>
+
+<div class="item">
+<div class="icon">🤲</div>
+<span>দু'আ-দুরুদ</span>
+</div>
+
+<div class="item">
+<div class="icon">📰</div>
+<span>প্রবন্ধ</span>
+</div>
+
+
+
+
+<div class="item">
+<a href="book page.html" 
+   style="text-decoration:none; color:inherit; display:block;">
+        <div class="icon">🗞️</div>
+        <span>রুকাইয়া</span>
+</a>
+    </div>
+
+
+
+
+
+
+
+
+<div class="item">
+<div class="icon">🏫</div>
+<span>মাদ্রাসা</span>
+</div>
+
+<div class="item">
+<div class="icon">⏰</div>
+<span>নামাজের সময়</span>
+</div>
+
+<div class="item">
+<div class="icon">💰</div>
+<span>অনুদান</span>
+</div>
+
+<div class="item">
+<div class="icon">⚙️</div>
+<span>সেটিংস</span>
+</div>
+
+</div>
+
+<!-- =========================
+     BOTTOM
+========================= -->
+
+<div class="bottom">
+
+<div class="card">
+সর্বশেষ সংবাদ
+</div>
+
+<div class="card green">
+দ্বীনি কিতাব
+</div>
+
+</div>
+
+<!-- =========================
+     MALFUZAT POPUP
+========================= -->
+
+<div class="popup-overlay" id="popupOverlay">
+
+<div class="popup-box">
+
+<button class="close-btn"
+onclick="closePopup()">
+✕
+</button>
+
+<div class="popup-header">
+মালফুযাত
+</div>
+
+<div class="popup-content">
+
+<h2 id="popupTitle"></h2>
+
+<p id="popupText"></p>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+/* =========================
+   LIVE DATE & TIME
+========================= */
+
+function updateTime(){
+
+const now = new Date();
+
+const time = now.toLocaleTimeString('en-US');
+
+const date = now.toLocaleDateString('bn-BD',{
+
+weekday:'long',
+day:'numeric',
+month:'long',
+year:'numeric'
+
+});
+
+document.getElementById("time").innerText =
+"সময়: " + time;
+
+document.getElementById("date").innerText =
+date;
+
+}
+
+setInterval(updateTime,1000);
+
+updateTime();
+
+/* =========================
+   MALFUZAT DATA
+========================= */
+
+const malfuzat = [
+
+{
+title:"কৃষি কাজ থেকে মৃত্যুর পরের অবস্থা বুঝা যায়",
+text:"হযরতওয়ালা মুফতী মনসুরুল হক সাহেব হাফিজাহুল্লাহ বলেন, কৃষি কাজ থেকে মৃত্যুর পরের অবস্থা বুঝা যায়। ফসল কাটার সময় হলে তা কেটে নিয়ে যায়, তারপর কিছুদিন জাগা দেয়।"
+},
+
+{
+title:"নামাজ মানুষকে গুনাহ থেকে বাঁচায়",
+text:"যে ব্যক্তি নিয়মিত নামাজ আদায় করে আল্লাহ তাআলা তাকে অনেক গুনাহ থেকে রক্ষা করেন। নামাজ মুমিনের জীবনের সবচেয়ে বড় সম্পদ।"
+},
+
+{
+title:"সৎ সঙ্গ মানুষের জীবন পরিবর্তন করে",
+text:"ভাল মানুষের সাথে থাকলে মানুষের চরিত্র সুন্দর হয়। আর খারাপ সঙ্গ ধীরে ধীরে মানুষকে ধ্বংসের দিকে নিয়ে যায়।"
+},
+
+{
+title:"দুনিয়া অস্থায়ী, আখিরাত চিরস্থায়ী",
+text:"এই দুনিয়ার জীবন খুবই অল্প সময়ের। প্রকৃত সফলতা হলো আখিরাতের সফলতা অর্জন করা।"
+},
+
+{
+title:"আল্লাহর জিকিরে অন্তর প্রশান্ত হয়",
+text:"যে ব্যক্তি বেশি বেশি আল্লাহকে স্মরণ করে তার অন্তর শান্তি পায় এবং জীবনে বরকত আসে।"
+}
+
+];
+
+/* =========================
+   RANDOM MALFUZAT
+========================= */
+
+function showRandomMalfuzat(){
+
+const random =
+Math.floor(Math.random() * malfuzat.length);
+
+document.getElementById("popupTitle")
+.innerText = malfuzat[random].title;
+
+document.getElementById("popupText")
+.innerText = malfuzat[random].text;
+
+}
+
+/* =========================
+   CLOSE POPUP
+========================= */
+
+function closePopup(){
+
+document.getElementById("popupOverlay")
+.style.display = "none";
+
+}
+
+/* =========================
+   SHOW ON OPEN
+========================= */
+
+window.onload = function(){
+
+showRandomMalfuzat();
+
+};
+
+</script>
+
+</body>
+</html>html>
