@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>আমল ও রুকাইয়া</title>
+<title>আমলী যিন্দেগী ও রুকইয়াহ</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;700&display=swap" rel="stylesheet">
 
@@ -54,8 +54,9 @@ body{
 }
 
 .header-title{
-    font-size:24px;
+    font-size:22px;
     font-weight:600;
+    text-align:center;
 }
 
 .menu{
@@ -126,6 +127,12 @@ body{
     font-weight:500;
 }
 
+.item a{
+    text-decoration:none;
+    color:inherit;
+    display:block;
+}
+
 /* =========================
    BOTTOM SECTION
 ========================= */
@@ -154,7 +161,7 @@ body{
 }
 
 /* =========================
-   POPUP
+   MALFUZAT POPUP
 ========================= */
 
 .popup-overlay{
@@ -163,30 +170,44 @@ body{
     left:0;
     width:100%;
     height:100%;
-    background:rgba(0,0,0,0.65);
+
+    background:rgba(0,0,0,0.45);
+
     display:flex;
     justify-content:center;
     align-items:center;
+
     z-index:9999;
+
     padding:20px;
+
+    backdrop-filter:blur(1px);
+    -webkit-backdrop-filter:blur(1px);
 }
 
 .popup-box{
     width:100%;
     max-width:420px;
+
     background:#dfeeed;
-    border-radius:30px;
+
+    border-radius:28px;
+
     overflow:hidden;
+
     position:relative;
+
     animation:popupShow 0.3s ease;
+
+    box-shadow:0 10px 35px rgba(0,0,0,0.25);
 }
 
 .popup-header{
     background:#00594d;
     color:white;
     text-align:center;
-    padding:18px;
-    font-size:28px;
+    padding:16px;
+    font-size:26px;
     font-weight:bold;
 }
 
@@ -196,31 +217,125 @@ body{
 
 .popup-content h2{
     text-align:center;
-    font-size:22px;
+    font-size:21px;
     margin-bottom:18px;
     color:#222;
     line-height:1.5;
 }
 
 .popup-content p{
-    font-size:18px;
-    line-height:1.8;
+    font-size:17px;
+    line-height:1.9;
     color:#222;
 }
 
 .close-btn{
     position:absolute;
-    top:15px;
-    right:15px;
-    width:48px;
-    height:48px;
+    top:12px;
+    right:12px;
+    width:42px;
+    height:42px;
     border:none;
     border-radius:50%;
     background:white;
     color:#4fa391;
-    font-size:28px;
+    font-size:24px;
     cursor:pointer;
     box-shadow:0 2px 10px rgba(0,0,0,0.2);
+}
+
+/* =========================
+   DESIGNER POPUP
+========================= */
+
+.designer-overlay{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+
+    background:rgba(0,0,0,0.45);
+
+    display:none;
+    justify-content:center;
+    align-items:center;
+
+    z-index:99999;
+
+    padding:20px;
+
+    backdrop-filter:blur(4px);
+    -webkit-backdrop-filter:blur(2px);
+}
+
+.designer-popup{
+    width:100%;
+    max-width:320px;
+
+    background:rgba(255,255,255,0.18);
+
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,0.25);
+
+    border-radius:28px;
+
+    padding:20px;
+
+    position:relative;
+
+    animation:designerShow 0.3s ease;
+
+    box-shadow:0 10px 30px rgba(0,0,0,0.25);
+}
+
+.designer-top{
+    display:flex;
+    align-items:center;
+    gap:14px;
+}
+
+.designer-img{
+    width:68px;
+    height:68px;
+    border-radius:50%;
+    object-fit:cover;
+    border:1px solid rgba(255,255,255,0.5);
+}
+
+.designer-name{
+    font-size:18px;
+    font-weight:700;
+    color:orange;
+}
+
+.designer-role{
+    font-size:13px;
+    color:white;
+    margin-top:4px;
+}
+
+.designer-desc{
+    margin-top:15px;
+    font-size:14px;
+    line-height:1.7;
+    color:yellow;
+}
+
+.designer-close{
+    position:absolute;
+    top:10px;
+    right:10px;
+    width:34px;
+    height:34px;
+    border:none;
+    border-radius:50%;
+    background:white;
+    color:#00594d;
+    font-size:20px;
+    cursor:pointer;
 }
 
 /* =========================
@@ -241,6 +356,20 @@ to{
 
 }
 
+@keyframes designerShow{
+
+from{
+    opacity:0;
+    transform:translateY(-10px);
+}
+
+to{
+    opacity:1;
+    transform:translateY(0);
+}
+
+}
+
 /* =========================
    RESPONSIVE
 ========================= */
@@ -248,7 +377,7 @@ to{
 @media(max-width:768px){
 
 .header-title{
-    font-size:20px;
+    font-size:18px;
 }
 
 .logo{
@@ -303,21 +432,66 @@ to{
 }
 
 .close-btn{
-    width:42px;
-    height:42px;
-    font-size:22px;
+    width:38px;
+    height:38px;
+    font-size:20px;
+}
+
+.designer-popup{
+    width:95%;
 }
 
 }
+
+
+/* =========================
+   DESIGNER CONTACT
+========================= */
+
+.designer-contact{
+    margin-top:22px;
+    display:flex;
+    justify-content:center;
+    gap:18px;
+}
+
+.contact-btn{
+    width:30px;
+    height:30px;
+    border-radius:18px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-decoration:none;
+    font-size:16px;
+    transition:0.3s;
+    box-shadow:0 4px 14px rgba(0,0,0,0.15);
+}
+
+.contact-btn:hover{
+    transform:scale(1.08);
+}
+
+.whatsapp{
+    background:#25D366;
+    color:white;
+}
+
+.call{
+    background:green;
+    color:white;
+}
+/* এখানে তোমার নতুন CSS শেষ */
+</style>
+
+
 
 </style>
 </head>
 
 <body>
 
-<!-- =========================
-     HEADER
-========================= -->
+<!-- HEADER -->
 
 <div class="header">
 
@@ -326,18 +500,17 @@ to{
 </div>
 
 <div class="header-title">
-আমলী যিন্দেগী ও রুকাইয়া
+    আমলী যিন্দেগী ও রুকইয়াহ
 </div>
 
-<div class="menu">
+<div class="menu"
+onclick="openDesignerPopup()">
 ⋮
 </div>
 
 </div>
 
-<!-- =========================
-     TOP BOX
-========================= -->
+<!-- TOP BOX -->
 
 <div class="top-box">
 
@@ -351,9 +524,7 @@ to{
 
 </div>
 
-<!-- =========================
-     GRID
-========================= -->
+<!-- GRID -->
 
 <div class="grid">
 
@@ -392,23 +563,12 @@ to{
 <span>প্রবন্ধ</span>
 </div>
 
-
-
-
 <div class="item">
-<a href="book page.html" 
-   style="text-decoration:none; color:inherit; display:block;">
-        <div class="icon">🗞️</div>
-        <span>রুকাইয়া</span>
+<a href="book page.html">
+<div class="icon">🗞️</div>
+<span>রুকাইয়া</span>
 </a>
-    </div>
-
-
-
-
-
-
-
+</div>
 
 <div class="item">
 <div class="icon">🏫</div>
@@ -432,9 +592,7 @@ to{
 
 </div>
 
-<!-- =========================
-     BOTTOM
-========================= -->
+<!-- BOTTOM -->
 
 <div class="bottom">
 
@@ -448,9 +606,7 @@ to{
 
 </div>
 
-<!-- =========================
-     MALFUZAT POPUP
-========================= -->
+<!-- MALFUZAT POPUP -->
 
 <div class="popup-overlay" id="popupOverlay">
 
@@ -477,6 +633,87 @@ onclick="closePopup()">
 
 </div>
 
+<!-- DESIGNER POPUP -->
+<!-- =========================
+     DESIGNER POPUP
+========================= -->
+
+<div class="designer-overlay"
+id="designerOverlay">
+
+<div class="designer-popup">
+
+<button class="designer-close"
+onclick="closeDesignerPopup()">
+✕
+</button>
+
+<div class="designer-top">
+
+<img class="designer-img"
+src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi5IBcP6tpFRm9agxICOfERB68CCrI_Wav-QDM0z4A6X-YS59BayfMtlm-ISCGJCZ09DgL6GS3PE1h3a6Eo1sy9sprsJoz7b_neBSR4MiiZBVMdSwvFBZVeqRpk5DHTQ21bPgYWT55voDm7GaxLXDBmO0gZya6XZNYGNaGS0rdAwdpc1fCKDGLtDbIsNJzH/s1600/Screenshot_20251116-093859.jpg">
+
+<div>
+
+<div class="designer-name">
+Md Shipon Mia (Sohail)
+</div>
+
+<div class="designer-role">
+App UI Designer & Developer
+</div>
+
+</div>
+
+</div>
+
+<div class="designer-desc">
+
+এই অ্যাপটি আধুনিক ইসলামিক ডিজাইন ও সুন্দর UI/UX ব্যবহার করে তৈরি করা হয়েছে।
+
+<br><br>
+<font color="white">
+✅ HTML, CSS, JavaScript Expert  
+<br>
+
+✅ Modern Islamic UI/UX Designer  
+<br>
+
+✅ Android Web App Developer  
+<br>
+
+✅ Responsive Mobile Design Specialist  
+<br>
+
+✅ Professional Web Developer
+</font>
+</div>
+
+<!-- CONTACT ICONS -->
+
+
+<div class="designer-contact">
+
+<a href="https://wa.me/8801960670704"
+target="_blank"
+class="contact-btn whatsapp">
+
+💬
+
+</a>
+
+<a href="tel:+8801960670704"
+class="contact-btn call">
+
+📞
+
+</a>
+
+</div>
+
+</div>
+
+</div>
 <script>
 
 /* =========================
@@ -518,27 +755,17 @@ const malfuzat = [
 
 {
 title:"কৃষি কাজ থেকে মৃত্যুর পরের অবস্থা বুঝা যায়",
-text:"হযরতওয়ালা মুফতী মনসুরুল হক সাহেব হাফিজাহুল্লাহ বলেন, কৃষি কাজ থেকে মৃত্যুর পরের অবস্থা বুঝা যায়। ফসল কাটার সময় হলে তা কেটে নিয়ে যায়, তারপর কিছুদিন জাগা দেয়।"
+text:"হযরতওয়ালা মুফতী মনসুরুল হক সাহেব হাফিজাহুল্লাহ বলেন, কৃষি কাজ থেকে মৃত্যুর পরের অবস্থা বুঝা যায়।"
 },
 
 {
 title:"নামাজ মানুষকে গুনাহ থেকে বাঁচায়",
-text:"যে ব্যক্তি নিয়মিত নামাজ আদায় করে আল্লাহ তাআলা তাকে অনেক গুনাহ থেকে রক্ষা করেন। নামাজ মুমিনের জীবনের সবচেয়ে বড় সম্পদ।"
+text:"যে ব্যক্তি নিয়মিত নামাজ আদায় করে আল্লাহ তাআলা তাকে অনেক গুনাহ থেকে রক্ষা করেন।"
 },
 
 {
 title:"সৎ সঙ্গ মানুষের জীবন পরিবর্তন করে",
-text:"ভাল মানুষের সাথে থাকলে মানুষের চরিত্র সুন্দর হয়। আর খারাপ সঙ্গ ধীরে ধীরে মানুষকে ধ্বংসের দিকে নিয়ে যায়।"
-},
-
-{
-title:"দুনিয়া অস্থায়ী, আখিরাত চিরস্থায়ী",
-text:"এই দুনিয়ার জীবন খুবই অল্প সময়ের। প্রকৃত সফলতা হলো আখিরাতের সফলতা অর্জন করা।"
-},
-
-{
-title:"আল্লাহর জিকিরে অন্তর প্রশান্ত হয়",
-text:"যে ব্যক্তি বেশি বেশি আল্লাহকে স্মরণ করে তার অন্তর শান্তি পায় এবং জীবনে বরকত আসে।"
+text:"ভাল মানুষের সাথে থাকলে মানুষের চরিত্র সুন্দর হয়।"
 }
 
 ];
@@ -561,12 +788,30 @@ document.getElementById("popupText")
 }
 
 /* =========================
-   CLOSE POPUP
+   CLOSE MALFUZAT POPUP
 ========================= */
 
 function closePopup(){
 
 document.getElementById("popupOverlay")
+.style.display = "none";
+
+}
+
+/* =========================
+   DESIGNER POPUP
+========================= */
+
+function openDesignerPopup(){
+
+document.getElementById("designerOverlay")
+.style.display = "flex";
+
+}
+
+function closeDesignerPopup(){
+
+document.getElementById("designerOverlay")
 .style.display = "none";
 
 }
